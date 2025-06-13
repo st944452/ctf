@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Challenge Terminal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    <div class="container">
+        <header class="header">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="btn-close"></span>
+                    <span class="btn-minimize"></span>
+                    <span class="btn-maximize"></span>
+                </div>
+                <div class="terminal-title">
+                    <i class="fas fa-terminal"></i>
+                    CTF Challenge Terminal v2.0
+                </div>
+            </div>
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="CAPTURE THE FLAG">CAPTURE THE FLAG</h1>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progressText">0/4 Challenges Completed</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="challenges-container">
+            <!-- Challenge 1: Hidden Directory MD5 -->
+            <div class="challenge-card" data-challenge="1">
+                <div class="challenge-header">
+                    <div class="challenge-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <div class="challenge-info">
+                        <h3 class="challenge-title">Hidden Directory Discovery</h3>
+                        <p class="challenge-description">Locate the hidden directory and extract the MD5 hash from its contents</p>
+                    </div>
+                    <div class="challenge-status" id="status1">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <div class="challenge-body">
+                    <div class="hint-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Hint: particle14</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="hiddenDirInput" placeholder="Enter MD5 hash" class="cyber-input" autocomplete="off">
+                        <button type="button" id="hiddenDirBtn" class="cyber-btn" onclick="checkHiddenDir()">
+                            <span>SUBMIT</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenge 2: Hash Cracking -->
+            <div class="challenge-card" data-challenge="2">
+                <div class="challenge-header">
+                    <div class="challenge-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="challenge-info">
+                        <h3 class="challenge-title">Hash Cracking</h3>
+                        <p class="challenge-description">Use Crackstation to crack the hash and reveal the hidden text</p>
+                    </div>
+                    <div class="challenge-status" id="status2">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <div class="challenge-body">
+                    <div class="hint-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Hint: Crackstation</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="crackHashInput" placeholder="Enter cracked text" class="cyber-input" autocomplete="off">
+                        <button type="button" id="crackHashBtn" class="cyber-btn" onclick="checkCrackstation()">
+                            <span>SUBMIT</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenge 3: Base64 Decoding -->
+            <div class="challenge-card" data-challenge="3">
+                <div class="challenge-header">
+                    <div class="challenge-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="challenge-info">
+                        <h3 class="challenge-title">Base64 Decoding</h3>
+                        <p class="challenge-description">Find the hidden base64 file and decode its contents</p>
+                    </div>
+                    <div class="challenge-status" id="status3">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <div class="challenge-body">
+                    <div class="hint-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Hint: Look for encoded data</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="base64Input" placeholder="Enter decoded text" class="cyber-input" autocomplete="off">
+                        <button type="button" id="base64Btn" class="cyber-btn" onclick="checkBase64()">
+                            <span>SUBMIT</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenge 4: Service Discovery -->
+            <div class="challenge-card" data-challenge="4">
+                <div class="challenge-header">
+                    <div class="challenge-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="challenge-info">
+                        <h3 class="challenge-title">Service Discovery</h3>
+                        <p class="challenge-description">Identify the running service on the target system</p>
+                    </div>
+                    <div class="challenge-status" id="status4">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <div class="challenge-body">
+                    <div class="hint-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Hint: Check active services</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="serviceInput" placeholder="e.g. apache2" class="cyber-input" autocomplete="off">
+                        <button type="button" id="serviceBtn" class="cyber-btn" onclick="checkService()">
+                            <span>SUBMIT</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Success Modal -->
+        <div class="modal" id="successModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fas fa-trophy"></i>
+                    <h2>Challenge Completed!</h2>
+                </div>
+                <div class="modal-body">
+                    <p id="successMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="cyber-btn" onclick="closeModal()">
+                        <span>CONTINUE</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Modal -->
+        <div class="modal" id="errorModal">
+            <div class="modal-content error">
+                <div class="modal-header">
+                    <i class="fas fa-times-circle"></i>
+                    <h2>Access Denied</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Incorrect credentials. Try again.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="cyber-btn" onclick="closeModal()">
+                        <span>RETRY</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
